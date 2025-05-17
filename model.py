@@ -47,7 +47,6 @@ class Camera:
 
     def rotate(self, horizontal, zoom):
         new_eye_pos = np.copy(self.eye_pos)
-        new_lookat = np.copy(self.look_at)
         # calculate the current gaze vector
         gaze_vector = self.look_at - self.eye_pos
 
@@ -61,7 +60,6 @@ class Camera:
         gaze_vector_unit = gaze_vector / np.linalg.norm(gaze_vector)
 
         new_eye_pos += gaze_vector_unit * zoom
-        new_lookat = new_lookat + gaze_vector_unit * zoom
 
         return new_eye_pos
         
@@ -137,6 +135,7 @@ class Car:
         quadric = gluNewQuadric()
         glTranslatef(0.0, 0.0, 0.5)   # orient cylinder axis along +Z
         glRotatef(self.car_speed, 0.0, 0.0, 1.0)
+        glScalef(1, 0.8, 1.2)
         glColor3f(1.0, 1.0, 0.0)          # yellow
         #gluCylinder(quadric, self.wheel_radius, self.wheel_radius, 1.0, 32, 1)
         glutSolidTorus(self.wheel_radius-1, self.wheel_radius, 32, 32)   # cylinder (r=0.5, length=1)
@@ -185,9 +184,10 @@ class Car:
 
         glutSwapBuffers()
 
-    def jumpingCar(self):
+    def jumpingCar(self, victory):
         glPushMatrix()
-        num = np.sin(pygame.time.get_ticks()/1000.0)*5
+        num = np.sin(pygame.time.get_ticks()/1000.0)*2
+        if victory: num*=2
         height = abs(num) * 4
         scale = abs(num) * 0.1
 
