@@ -49,6 +49,8 @@ python game.py
 * Created by Mason Pennell
 * Traffic Cone 3D Model by [Bazsa](https://free3d.com/3d-model/traffic-cone-36832.html)
 * Simple Gold Coin by [Makartsov-Aleksandr](https://www.turbosquid.com/3d-models/simple-gold-coin-2084198)
+* Retro Coin and Applause sounds by [Driken](https://pixabay.com/pt/users/driken5482-45721595/)
+* Boo sound by [freesound_community](https://pixabay.com/users/freesound_community-46691455/)
 
 ## Acknowledgments
 
