@@ -1,16 +1,13 @@
-import sys, pygame, time
+import pygame, time
+from sys import exit
 from pygame.locals import *
 from pygame.constants import *
-from OpenGL.GL import *
-from OpenGL.GLUT import *
-from OpenGL.GLU import *
 
 from OBJFileLoader import *
 from model import *
 from obstacles import *
 
 import numpy as np
-from collections import defaultdict
 
 width, height = 1200, 700 
 lane_size = 5
@@ -108,12 +105,12 @@ def finish(victory):
         
         for e in pygame.event.get():
             if e.type == QUIT:
-                sys.exit()
+                exit()
             if e.type == MOUSEMOTION:
                 pass
             if e.type == KEYDOWN:
                 if e.key == K_ESCAPE:
-                    sys.exit()
+                    exit()
 
         if pygame.key.get_pressed()[K_LEFT]:
             horizontal -= 1
@@ -207,7 +204,7 @@ def main():
         
         for e in pygame.event.get():
             if e.type == QUIT:
-                sys.exit()
+                exit()
             if e.type == KEYDOWN:
                 if not crashed and not isPaused:
                     # Turn left or right
@@ -223,7 +220,7 @@ def main():
                 elif e.key == K_p:
                     isPaused = not isPaused
                 elif e.key == K_ESCAPE:
-                    sys.exit()
+                    exit()
 
         if crashed and crash_timer is None:
             crash_timer = time.time()  # Start the crash timer

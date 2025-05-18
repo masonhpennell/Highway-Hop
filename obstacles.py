@@ -1,5 +1,3 @@
-from pygame.locals import *
-from pygame.constants import *
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
@@ -7,7 +5,6 @@ from OpenGL.GLU import *
 from OBJFileLoader import *
 
 import numpy as np
-from collections import defaultdict
 
 ########################################### Transformations ####################################################
 class Transform:
