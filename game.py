@@ -62,7 +62,7 @@ def finish(victory):
     if victory:
         message = "You Won!"
     else:
-        message = "You Lose! Try to collect more coins next time."
+        message = "You Lose!"
 
     glEnable(GL_LIGHTING)
     glEnable(GL_COLOR_MATERIAL)
@@ -259,9 +259,10 @@ def main():
                 movement += speed
             elif crashed:
                 speed = 0
-            elif movement >= finish and score >= win:
+            elif movement >= finish and score >= win and not timer.is_finished():
+                print (score, win)
                 return True
-            elif movement >= finish and score < win:
+            elif movement >= finish and (score < win or timer.is_finished()):
                 return False
             if speed < max_speed:
                 speed += acceleration
