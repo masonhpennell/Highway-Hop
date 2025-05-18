@@ -61,9 +61,10 @@ def finish(victory):
     message = ""
     if victory:
         message = "You Won!"
+        pygame.mixer.Sound("resources/sounds/applause.mp3").play()
     else:
         message = "You Lose!"
-
+        pygame.mixer.Sound("resources/sounds/boo.mp3").play()
     glEnable(GL_LIGHTING)
     glEnable(GL_COLOR_MATERIAL)
     glViewport(0, 0, width, height)
@@ -168,6 +169,9 @@ def main():
     glLightfv(GL_LIGHT0, GL_SPECULAR, (0.5, 0.5, 0.5, 1.0)) # softer white highlight
     glPopMatrix()
 
+    # Sound Effects
+    coin = pygame.mixer.Sound("resources/sounds/coin.mp3")
+
     # Movement Variables
     movement    = 0 # initial position
     lane        = 0 # initial lane
@@ -233,6 +237,7 @@ def main():
         # Check for collisions
         crashed = cones.collision(np.array([lane, 0, -movement+4]), lane_size) or crashed
         if coins.collision(np.array([lane, 5, -movement+2]), lane_size):
+            coin.play()
             score += 1
             print("Coin collected!")
         
