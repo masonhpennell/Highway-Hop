@@ -1,4 +1,4 @@
-# OpenGL Driving Game (title pending)
+# Highway Hop
 
 A fun driving game made in pygame that plays like "Subway Surfers"
 
@@ -32,11 +32,13 @@ python game.py
 
 ## How to Play
 
-To beat the game, you must reach the end of the track before time runs out, while collecting enough coins. You also have to avoid the traffic cones, as hitting one will stun you for a bit. Obstacles and coins will be placed randomly each time you play, so each session is a different experience.
+* To beat the game, you must reach the end of the track before time runs out, while collecting enough coins. You also have to avoid the traffic cones, as hitting one will stun you for a bit. Obstacles and coins will be placed randomly each time you play, so each session is a different experience.
 
-To control the car, use the **left and right arrow keys**. You can move between five lanes to avoid cones and get coins.
+* To control the car, use the **left and right arrow keys**. You can move between five lanes to avoid cones and get coins.
 
-After the game ends, you can move the camera around and zoom in on the car. **Use the left and right arrow keys**.
+* Use the **P key** to pause the game.
+
+* After the game ends, you can move the camera around and zoom in on the car. **Use the left and right arrow keys**.
 
 ## Known Bugs
 

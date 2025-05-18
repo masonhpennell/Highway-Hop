@@ -56,6 +56,7 @@ def drawGround(victory):
     glEnd()
 
 def finish(victory):
+    print("Use the arrow keys to move the camera.")
     screen = pygame.display.set_mode((width, height), DOUBLEBUF | OPENGL)
     message = ""
     if victory:
@@ -189,6 +190,7 @@ def main():
     timer = Timer(30)
     crashed = False
     countdown = True
+    isPaused = False
     crash_timer = None  # Timer to track crash duration
     
     # main loop
@@ -203,7 +205,7 @@ def main():
             if e.type == QUIT:
                 sys.exit()
             if e.type == KEYDOWN:
-                if not crashed:
+                if not crashed and not isPaused:
                     # Turn left or right
                     if e.key == K_RIGHT and lane < 20:
                         car.turn('right')
@@ -214,6 +216,8 @@ def main():
                 # Switch to first-person view
                 if e.key == K_SPACE:
                     camera.switch_view()
+                elif e.key == K_p:
+                    isPaused = not isPaused
                 elif e.key == K_ESCAPE:
                     sys.exit()
 
@@ -250,16 +254,17 @@ def main():
         coins.drawMeshes()
         car.drawCar(movement, crashed)
         # Check if player has won
-        if movement < finish and not crashed:
-            movement += speed
-        elif crashed:
-            speed = 0
-        elif movement >= finish and score >= win:
-            return True
-        elif movement >= finish and score < win:
-            return False
-        if speed < max_speed:
-            speed += acceleration
+        if not isPaused:
+            if movement < finish and not crashed:
+                movement += speed
+            elif crashed:
+                speed = 0
+            elif movement >= finish and score >= win:
+                return True
+            elif movement >= finish and score < win:
+                return False
+            if speed < max_speed:
+                speed += acceleration
 
         glPopMatrix()
         pygame.display.flip()
@@ -275,5 +280,4 @@ def main():
 if __name__ == "__main__":
     pygame.init()
     pygame.font.init()
-    print("Use the arrow keys to move the camera.")
     finish(main())
